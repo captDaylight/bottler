@@ -1,0 +1,29 @@
+{
+  "name": "bottler",
+  "version": "1.0.0",
+  "description": "Bottle up documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/captDaylight/bottler.git"
+  },
+  "keywords": [
+    "markdown",
+    "node",
+    "react"
+  ],
+  "author": "paul christophe @captDaylight <paul@neondaylight.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/captDaylight/bottler/issues"
+  },
+  "homepage": "https://github.com/captDaylight/bottler#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
