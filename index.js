@@ -28,7 +28,7 @@ const contents = getDirectories(docRoot);
 const compileDirectory = (contents, docRoot) => {
   const orderPath = `${docRoot}/_order.yml`;
   const order = existsSync(orderPath) ? YAML.load(orderPath) : null;
-
+  console.log(order);
   return contents
     .map(item => parse(item))
     .sort((a, b) => {
@@ -57,7 +57,7 @@ const compileDirectory = (contents, docRoot) => {
         ...acc,
         {
           name,
-          content: compileDirectory(getDirectories(path), dir),
+          content: compileDirectory(getDirectories(path), path),
         }
       ];
     }, []);
