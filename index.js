@@ -1,5 +1,14 @@
 const fs = require('fs');
-const path = require('path');
+const { join, dirname, resolve, parse } = require('path');
+const mkdirp = require('mkdirp');
+
+const writeFile = (path, contents, cb) => {
+  mkdirp(dirname(path), function (err) {
+    if (err) return cb(err);
+
+    fs.writeFile(path, contents, cb);
+  });
+};
 
 const isDirectory =
   source =>
@@ -8,13 +17,13 @@ const isDirectory =
 const getDirectories =
   source =>
     fs.readdirSync(source)
-    .map(name => path.join(source, name))
+    .map(name => join(source, name))
 
-const contents = getDirectories(path.resolve(__dirname, './docs'));
+const contents = getDirectories(resolve(__dirname, './docs'));
 
 const compileDirectory = (contents) =>
   contents.reduce((acc, item) => {
-    const { name, ext } = path.parse(item);
+    const { name, ext } = parse(item);
 
     if (!isDirectory(item)) {
       if (ext !== '.md') return acc;
@@ -33,8 +42,8 @@ const compileDirectory = (contents) =>
     ];
   }, []);
 
-fs.writeFile('./build/test.json', JSON.stringify(compileDirectory(contents)), 'utf-8', function(err) {
-  if(err) {
+writeFile('./build/test.json', JSON.stringify(compileDirectory(contents)), (err) => {
+  if (err) {
     return console.log(err);
   }
 
