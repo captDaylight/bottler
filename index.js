@@ -3,7 +3,9 @@ const { join, dirname, resolve, parse } = require('path');
 const mkdirp = require('mkdirp');
 const YAML = require('yamljs');
 
-const docRoot = resolve(__dirname, './docs');
+// TODO should make this more robust...
+const docRoot = resolve(__dirname, process.argv[2]);
+const outFileName = process.argv[3] || 'bundle';
 
 // helper function to create folder if it doesn't exist, then write file
 const writeFileToFolder = (path, contents, cb) => {
@@ -28,7 +30,7 @@ const contents = getDirectories(docRoot);
 const compileDirectory = (contents, docRoot) => {
   const orderPath = `${docRoot}/_order.yml`;
   const order = existsSync(orderPath) ? YAML.load(orderPath) : null;
-  console.log(order);
+
   return contents
     .map(item => parse(item))
     .sort((a, b) => {
@@ -63,8 +65,10 @@ const compileDirectory = (contents, docRoot) => {
     }, []);
 }
 
+const jsonBundle = JSON.stringify(compileDirectory(contents, docRoot));
+
 // write documentation json to the build folder
-writeFileToFolder('./build/test.json', JSON.stringify(compileDirectory(contents, docRoot)), (err) => {
+writeFileToFolder(`./build/${outFileName}.json`, jsonBundle, (err) => {
   if (err) {
     return console.log(err);
   }
