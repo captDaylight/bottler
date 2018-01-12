@@ -27,5 +27,9 @@
     "mkdirp": "^0.5.1",
     "path": "^0.12.7",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }

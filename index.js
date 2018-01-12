@@ -9,10 +9,10 @@ const outFileName = process.argv[3] || 'bundle';
 
 // helper function to create folder if it doesn't exist, then write file
 const writeFileToFolder = (path, contents, cb) => {
-  mkdirp(dirname(path), function (err) {
+  mkdirp(dirname(path), (err) => {
     if (err) return cb(err);
 
-    writeFile(path, contents, cb);
+    return writeFile(path, contents, cb);
   });
 };
 
@@ -22,13 +22,12 @@ const isDirectory =
 
 const getDirectories =
   source =>
-    readdirSync(source)
-    .map(name => join(source, name))
+    readdirSync(source).map(name => join(source, name));
 
-const contents = getDirectories(docRoot);
+const rootContents = getDirectories(docRoot);
 
-const compileDirectory = (contents, docRoot) => {
-  const orderPath = `${docRoot}/_order.yml`;
+const compileDirectory = (contents, root) => {
+  const orderPath = `${root}/_order.yml`;
   const order = existsSync(orderPath) ? YAML.load(orderPath) : null;
 
   return contents
@@ -51,7 +50,7 @@ const compileDirectory = (contents, docRoot) => {
         // if it's markdown, write contents to the object
         const content = readFileSync(path, 'utf8');
 
-        return [ ...acc, { name, content } ];
+        return [...acc, { name, content }];
       }
 
       // if directory, recurse through the subdirector
@@ -60,12 +59,12 @@ const compileDirectory = (contents, docRoot) => {
         {
           name,
           content: compileDirectory(getDirectories(path), path),
-        }
+        },
       ];
     }, []);
-}
+};
 
-const jsonBundle = JSON.stringify(compileDirectory(contents, docRoot));
+const jsonBundle = JSON.stringify(compileDirectory(rootContents, docRoot));
 
 // write documentation json to the build folder
 writeFileToFolder(`./build/${outFileName}.json`, jsonBundle, (err) => {
@@ -73,5 +72,5 @@ writeFileToFolder(`./build/${outFileName}.json`, jsonBundle, (err) => {
     return console.log(err);
   }
 
-  console.log('The file was saved!');
+  return console.log('The file was saved!');
 });
