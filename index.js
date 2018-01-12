@@ -1,22 +1,22 @@
-const fs = require('fs');
+const { writeFile, lstatSync, readdirSync, readFileSync } = require('fs');
 const { join, dirname, resolve, parse } = require('path');
 const mkdirp = require('mkdirp');
 
-const writeFile = (path, contents, cb) => {
+const writeFileToFolder = (path, contents, cb) => {
   mkdirp(dirname(path), function (err) {
     if (err) return cb(err);
 
-    fs.writeFile(path, contents, cb);
+    writeFile(path, contents, cb);
   });
 };
 
 const isDirectory =
   source =>
-    fs.lstatSync(source).isDirectory();
+    lstatSync(source).isDirectory();
 
 const getDirectories =
   source =>
-    fs.readdirSync(source)
+    readdirSync(source)
     .map(name => join(source, name))
 
 const contents = getDirectories(resolve(__dirname, './docs'));
@@ -28,7 +28,7 @@ const compileDirectory = (contents) =>
     if (!isDirectory(item)) {
       if (ext !== '.md') return acc;
 
-      const content = fs.readFileSync(item, 'utf8');
+      const content = readFileSync(item, 'utf8');
 
       return [ ...acc, { name, content } ];
     }
@@ -42,7 +42,7 @@ const compileDirectory = (contents) =>
     ];
   }, []);
 
-writeFile('./build/test.json', JSON.stringify(compileDirectory(contents)), (err) => {
+writeFileToFolder('./build/test.json', JSON.stringify(compileDirectory(contents)), (err) => {
   if (err) {
     return console.log(err);
   }
