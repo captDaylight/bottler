@@ -4,7 +4,8 @@ const mkdirp = require('mkdirp');
 const YAML = require('yamljs');
 
 // TODO should make this more robust...
-const docRoot = resolve(__dirname, process.argv[2]);
+const entryFolder = process.argv[2];
+const docRoot = resolve(__dirname, entryFolder);
 const outFileName = process.argv[3] || 'bundle';
 
 // helper function to create folder if it doesn't exist, then write file
@@ -26,8 +27,8 @@ const getDirectories =
 
 const rootContents = getDirectories(docRoot);
 
-const compileDirectory = (contents, root) => {
-  const orderPath = `${root}/_order.yml`;
+const compileDirectory = (contents, pathname, path = '') => {
+  const orderPath = `${pathname}/_order.yml`;
   const order = existsSync(orderPath) ? YAML.load(orderPath) : null;
 
   return contents
@@ -42,15 +43,15 @@ const compileDirectory = (contents, root) => {
     })
     .reduce((acc, item) => {
       const { base, name, ext, dir } = item;
-      const path = `${dir}/${base}`;
+      const newPathname = `${dir}/${base}`;
 
-      if (!isDirectory(path)) {
+      if (!isDirectory(newPathname)) {
         if (ext !== '.md') return acc;
 
         // if it's markdown, write contents to the object
-        const content = readFileSync(path, 'utf8');
+        const content = readFileSync(newPathname, 'utf8');
 
-        return [...acc, { name, content }];
+        return [...acc, { name, content, url: `https://github.com/captDaylight/bottler/tree/master/${path}/${base}` }];
       }
 
       // if directory, recurse through the subdirector
@@ -58,7 +59,9 @@ const compileDirectory = (contents, root) => {
         ...acc,
         {
           name,
-          content: compileDirectory(getDirectories(path), path),
+          content: compileDirectory(getDirectories(newPathname), newPathname, `${path}/${base}`),
+          // TODO hardcoding most of this for now, should be generated in reality
+          url: `https://github.com/captDaylight/bottler/tree/master/${entryFolder}${path}/${base}`,
         },
       ];
     }, []);
