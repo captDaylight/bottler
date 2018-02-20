@@ -51,7 +51,11 @@ const compileDirectory = (contents, pathname, path = '') => {
         // if it's markdown, write contents to the object
         const content = readFileSync(newPathname, 'utf8');
 
-        return [...acc, { name, content, url: `https://github.com/captDaylight/bottler/tree/master/${path}/${base}` }];
+        return [...acc, {
+          name,
+          content,
+          url: `https://github.com/captDaylight/bottler/tree/master/${entryFolder}${path}/${base}`,
+        }];
       }
 
       // if directory, recurse through the subdirector
