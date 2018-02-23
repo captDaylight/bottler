@@ -5,8 +5,7 @@ Get pricing (ticker) data for various currency pairs (fiat, crypto, and tokens) 
 ## GET
 
 ```
-**GET**
-https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbol
+**GET** https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbol
 ```
 
 ### Parameters
