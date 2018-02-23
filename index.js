@@ -8,6 +8,9 @@ const entryFolder = process.argv[2];
 const docRoot = resolve(__dirname, entryFolder);
 const outFileName = process.argv[3] || 'bundle';
 
+// TODO hardcoding most of this for now, should be generated in reality
+const githubUrl = 'https://github.com/captDaylight/bottler/tree/master/';
+
 // helper function to create folder if it doesn't exist, then write file
 const writeFileToFolder = (path, contents, cb) => {
   mkdirp(dirname(path), (err) => {
@@ -16,6 +19,25 @@ const writeFileToFolder = (path, contents, cb) => {
     return writeFile(path, contents, cb);
   });
 };
+
+function findAllHeaders(sourceString, aggregator = {}) {
+  const arr = /(#+)(.*)/.exec(sourceString);
+
+  if (arr === null) return aggregator;
+
+  const newString = sourceString.slice(arr.index + arr[0].length);
+
+  const headerType = arr[1]; // # or ## etc
+  const headerValue = arr[2].trim();
+
+  if (headerType in aggregator) {
+    aggregator[headerType].push(headerValue);
+  } else {
+    aggregator[headerType] = [headerValue];
+  }
+
+  return findAllHeaders(newString, aggregator);
+}
 
 const isDirectory =
   source =>
@@ -51,21 +73,23 @@ const compileDirectory = (contents, pathname, path = '') => {
         // if it's markdown, write contents to the object
         const content = readFileSync(newPathname, 'utf8');
 
+        // TODO redundant?
         return [...acc, {
           name,
           content,
-          url: `https://github.com/captDaylight/bottler/tree/master/${entryFolder}${path}/${base}`,
+          url: `${githubUrl}${entryFolder}${path}/${base}`,
+          headers: findAllHeaders(content),
         }];
       }
 
       // if directory, recurse through the subdirector
+      const content = compileDirectory(getDirectories(newPathname), newPathname, `${path}/${base}`);
       return [
         ...acc,
         {
           name,
-          content: compileDirectory(getDirectories(newPathname), newPathname, `${path}/${base}`),
-          // TODO hardcoding most of this for now, should be generated in reality
-          url: `https://github.com/captDaylight/bottler/tree/master/${entryFolder}${path}/${base}`,
+          content,
+          url: `${githubUrl}${entryFolder}${path}/${base}`,
         },
       ];
     }, []);
