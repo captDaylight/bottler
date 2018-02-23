@@ -4,10 +4,7 @@ Return a blacklist of phishing sites. This list is maintained by GitHub user 409
 
 ## GET
 
-```
-**GET**
-https://private-anon-cf6e378447-infura.apiary-mock.com/v1/blacklist
-```
+`GET https://private-anon-cf6e378447-infura.apiary-mock.com/v1/blacklist`
 
 ## Request
 
