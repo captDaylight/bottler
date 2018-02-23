@@ -18,8 +18,6 @@ A request using an "HTTP GET-compatible" (non-state-changing) JSON-RPC method. M
 
 **NOTE: Not sure what to do since this is a code generator piece. See: [Apiary](https://infura.docs.apiary.io/#reference/0//v1/jsonrpc/{network}/methods/get)**
 
-### Response
-
 | Response |                                                  |
 |----------|--------------------------------------------------|
 | jsonrpc  | enum                                             |
