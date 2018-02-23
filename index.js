@@ -29,14 +29,15 @@ function findAllHeaders(sourceString, aggregator = {}) {
 
   const headerType = arr[1]; // # or ## etc
   const headerValue = arr[2].trim();
+  const newAgg = { ...aggregator };
 
   if (headerType in aggregator) {
-    aggregator[headerType].push(headerValue);
+    newAgg[headerType].push(headerValue);
   } else {
-    aggregator[headerType] = [headerValue];
+    newAgg[headerType] = [headerValue];
   }
 
-  return findAllHeaders(newString, aggregator);
+  return findAllHeaders(newString, newAgg);
 }
 
 const isDirectory =
