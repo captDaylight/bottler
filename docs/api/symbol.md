@@ -20,13 +20,21 @@ https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbol
 #### Attributes
 
 `base` string - Currency pair base
+
 `quote` string - Currency pair quote
+
 `bid` number - Bid at the exchange with the most volume
+
 `ask` number - Ask at the exchange with the most volume
+
 `exchange` string - The exchange with the most value
+
 `volume` number - Volume at the exchange with the most volume
+
 `num_exchanges` number - Number of exchanges queried
+
 `total_volume` number - Total volume across al exchanges queried
+
 `timestamp` number - Unix timestamp
 
 #### Ticker Response
