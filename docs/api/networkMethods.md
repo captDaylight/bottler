@@ -8,9 +8,9 @@ The JSON-RPC methods supported by the `/v1/jsonrpc/{network}/{method}` (GET) and
 
 ### Parameters
 
-|         |                                                                                          |      |
-|---------|------------------------------------------------------------------------------------------|------|
-| network | Ethereum network in lowercase. Possible values: `mainnet`, `ropsten`, `kovan`, `rinkeby` | enum |
+| Attributes |                                                                                          |      |
+|------------|------------------------------------------------------------------------------------------|------|
+| network    | Ethereum network in lowercase. Possible values: `mainnet`, `ropsten`, `kovan`, `rinkeby` | enum |
 
 ### Request
 
