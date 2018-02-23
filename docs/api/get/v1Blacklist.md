@@ -2,7 +2,7 @@
 
 Return a blacklist of phishing sites. This list is maintained by GitHub user 409H at [https://github.com/409H/EtherAddressLookup/blob/master/blacklists/domains.json](https://github.com/409H/EtherAddressLookup/blob/master/blacklists/domains.json).
 
-## GET
+### GET
 
 `GET https://private-anon-cf6e378447-infura.apiary-mock.com/v1/blacklist`
 

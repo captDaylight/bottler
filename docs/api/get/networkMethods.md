@@ -2,7 +2,7 @@
 
 The JSON-RPC methods supported by the `/v1/jsonrpc/{network}/{method}` (GET) and `/v1/jsonrpc/{network}` (POST) endpoints.
 
-## GET
+### GET
 
 `GET https://api.infura.io/v1/jsonrpc/network/methods`
 

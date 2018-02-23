@@ -2,7 +2,7 @@
 
 A request using an "HTTP POST-compatible" (state-changing) JSON-RPC method. Use the `/v1/jsonrpc/{network}/methods` endpoint to get the list of permitted methods. Use the regular Ethereum JSON-RPC format for the POST body.
 
-## POST
+### POST
 
 `POST https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network`
 
