@@ -24,7 +24,7 @@ JSON-RPC version
 
 `method` - required enum
 
-| **Ethereum JSON-RPC method** |--------|
+| **Ethereum JSON-RPC method** |        |
 |------------------------------|--------|
 | eth_sendRawTransaction       | string |
 | eth_estimateGas              | string |
