@@ -8,11 +8,9 @@ The JSON-RPC methods supported by the `/v1/jsonrpc/{network}/{method}` (GET) and
 
 ### Parameters
 
-**network**
-
-Ethereum network in lowercase
-
-Possible values: `mainnet`, `ropsten`, `kovan`, `rinkeby`.
+|         |                                                                                          |      |
+|---------|------------------------------------------------------------------------------------------|------|
+| network | Ethereum network in lowercase. Possible values: `mainnet`, `ropsten`, `kovan`, `rinkeby` | enum |
 
 ### Request
 
@@ -22,17 +20,9 @@ Possible values: `mainnet`, `ropsten`, `kovan`, `rinkeby`.
 
 #### Attributes
 
-`get` required `array`
+`get` - required array - List of methods supported by the /v1/jsonrpc/{network}/{method} endpoint (GET)
 
-List of methods supported by the /v1/jsonrpc/{network}/{method} endpoint (GET)
-
-`string 0`
-
-`post` required `array`
-
-List of methods supported by the /v1/jsonrpc/{network} endpoint (POST)
-
-`string 0`
+`post` - required array - List of methods supported by the /v1/jsonrpc/{network} endpoint (POST)
 
 #### Methods Response
 
@@ -42,9 +32,26 @@ List of methods supported by the /v1/jsonrpc/{network} endpoint (POST)
 
 `Content-Type:application/json`
 
-** Body
+**Body**
+
+```
+{
+  "get": [
+    "culpa ipsum sunt dolor",
+    "labore in",
+    "sunt pariatur eiusmod",
+    "nostrud mollit"
+  ],
+  "post": [
+    "aute aliqua elit",
+    "eu tempor nulla Excepteur eiusmod",
+    "ipsum et officia laborum"
+  ]
+}
+```
 
 **JSON Schema**
+
 ```
 {
   "type": "object",
@@ -71,22 +78,6 @@ List of methods supported by the /v1/jsonrpc/{network} endpoint (POST)
 }
 ```
 
-```
-{
-  "get": [
-    "culpa ipsum sunt dolor",
-    "labore in",
-    "sunt pariatur eiusmod",
-    "nostrud mollit"
-  ],
-  "post": [
-    "aute aliqua elit",
-    "eu tempor nulla Excepteur eiusmod",
-    "ipsum et officia laborum"
-  ]
-}
-```
-
 ### Response
 
 Server error
@@ -94,4 +85,5 @@ Server error
 ``500``
 
 **Headers**
+
 ``Content-Type:application/json``
