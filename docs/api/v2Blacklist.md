@@ -4,10 +4,7 @@ Return a blacklist of phishing sites, as well as a whitelist and a fuzzylist. Th
 
 ## GET
 
-```
-**GET**
-https://api.infura.io/v2/blacklist
-```
+`GET https://api.infura.io/v2/blacklist`
 
 ## Request
 
