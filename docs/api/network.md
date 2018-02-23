@@ -8,9 +8,9 @@ A request using an "HTTP POST-compatible" (state-changing) JSON-RPC method. Use 
 **POST** https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network
 ```
 
-| **Parameters** |                              |        |
-|----------------|------------------------------|--------|
-| Symbol         | Ticker symbol (currency pair | string |
+| Parameters |                              |        |
+|------------|------------------------------|--------|
+| Symbol     | Ticker symbol (currency pair | string |
 
 ### Request
 
@@ -24,12 +24,12 @@ JSON-RPC version
 
 `method` - required enum
 
-| **Ethereum JSON-RPC method** |        |
-|------------------------------|--------|
-| eth_sendRawTransaction       | string |
-| eth_estimateGas              | string |
-| eth_submitWork               | string |
-| eth_submitHashrate           | string |
+| Ethereum JSON-RPC method |        |
+|--------------------------|--------|
+| eth_sendRawTransaction   | string |
+| eth_estimateGas          | string |
+| eth_submitWork           | string |
+| eth_submitHashrate       | string |
 
 `params` - required array
 
