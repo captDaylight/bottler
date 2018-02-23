@@ -1,6 +1,6 @@
 # Infura Documentation
 
-This section provides all published technical documentation for Infura.
+Access all the information you need to utilize Infura for all your infrastructure needs.
 
 ## Not sure if the network is having issues?
 
