@@ -11,9 +11,9 @@ https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbol
 
 ### Parameters
 
-|        |                              |        |
-|--------|------------------------------|--------|
-| Symbol | Ticker symbol (currency pair | string |
+| Attributes |                              |        |
+|------------|------------------------------|--------|
+| Symbol     | Ticker symbol (currency pair | string |
 
 ### Response
 
