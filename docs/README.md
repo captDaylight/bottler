@@ -2,6 +2,9 @@
 
 This section provides all published technical documentation for Infura.
 
+## Not sure if the network is having issues?
+
+[View our status page](https://infura.io/status)
 
 ## Want to discuss your code?
 
