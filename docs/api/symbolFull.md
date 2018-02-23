@@ -4,29 +4,32 @@ A request using an "HTTP POST-compatible" (state-changing) JSON-RPC method. Use 
 
 ## POST
 
-```
-**POST** https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network
-```
+`POST https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network`
 
 ### Parameters
 
-|        |                              |        |
-|--------|------------------------------|--------|
-| Symbol | Ticker symbol (currency pair | string |
+| Attributes |                              |        |
+|------------|------------------------------|--------|
+| Symbol     | Ticker symbol (currency pair | string |
 
 ### Response
 
 #### Attributes
 
 `base` string - Currency pair base
+
 `quote` string - Currency pair quote
+
 `tickers` Array - List of tickers at various exchanges
 
-`object` 0
 `bid` number - Bid
+
 `ask` number - Ask
+
 `exchange` string - Exchange
+
 `volume` number - Volume
+
 `timestamp` number - Unix timestamp
 
 #### Full ticker Response
