@@ -4,7 +4,7 @@ A request using an "HTTP GET-compatible" (non-state-changing) JSON-RPC method. M
 
 ## GET
 
-`Get https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network/method?params=`
+`GET https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network/method?params=`
 
 | Parameters |                                                                                                                                                                |        |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
