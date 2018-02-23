@@ -4,10 +4,7 @@ Get a list of supported symbols (currency pairs), including fiat, crypto, and to
 
 ## GET
 
-```
-**GET**
-https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbols
-```
+`GET https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbols`
 
 ### Request
 
