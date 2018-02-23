@@ -1,6 +1,6 @@
 # Infura Documentation
 
-## Access all the information you need to utilize Infura for all your infrastructure needs.
+## Access all the information you need to utilize Infura for your infrastructure needs.
 
 ### Other Resources
 
