@@ -14,14 +14,11 @@ A request using an "HTTP POST-compatible" (state-changing) JSON-RPC method. Use 
 
 #### Attributes
 
-`jsonrpc` - required enum
-
-JSON-RPC version
-
+`jsonrpc` - required enum  
+JSON-RPC version  
 `2.0` string
 
-`method` - required enum
-
+`method` - required enum  
 | Ethereum JSON-RPC method |        |
 |--------------------------|--------|
 | eth_sendRawTransaction   | string |
@@ -29,18 +26,15 @@ JSON-RPC version
 | eth_submitWork           | string |
 | eth_submitHashrate       | string |
 
-`params` - required array
-
+`params` - required array  
 JSON-RPC parameters (can be empty)
 
 ### Response
 
 #### Attributes
 
-`jsonrpc` - required enum
-
-JSON-RPC version
-
+`jsonrpc` - required enum  
+JSON-RPC version  
 `2.0` string
 
 `id` - required number - JSON-RPC request ID
@@ -97,10 +91,8 @@ JSON-RPC version
 
 #### Attributes
 
-`jsonrpc` - required num
-
-JSON-RPC version
-
+`jsonrpc` - required num  
+JSON-RPC version  
 `2.0` - string
 
 `id` - required number - JSON-RPC request ID
