@@ -4,9 +4,7 @@ A request using an "HTTP POST-compatible" (state-changing) JSON-RPC method. Use 
 
 ## POST
 
-```
-**POST** https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network
-```
+`POST https://private-anon-cf6e378447-infura.apiary-mock.com/v1/jsonrpc/network`
 
 | Parameters |                              |        |
 |------------|------------------------------|--------|
