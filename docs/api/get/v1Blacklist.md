@@ -4,15 +4,22 @@ Return a blacklist of phishing sites. This list is maintained by GitHub user 409
 
 ### GET
 
-`GET https://private-anon-cf6e378447-infura.apiary-mock.com/v1/blacklist`
+`GET https://api.infura.io/v1/blacklist`
 
 ### Request
 
+```
+curl --include \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+  'https://api.infura.io/v1/blacklist'
+```
+
 ### Response
 
-#### Attributes
-
-string - 0
+| Attributes |   |
+|------------|---|
+| string     | 0 |
 
 #### List of blacklisted phishing domains
 

@@ -8,19 +8,27 @@ Return a blacklist of phishing sites, as well as a whitelist and a fuzzylist. Th
 
 ### Request
 
+```
+curl --include \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+  'https://api.infura.io/v2/blacklist'
+```
+
 ### Response
 
-#### Attributes
-
-`version` - required number - Version
-
-`tolerance` - required number - Tolerance
-
-`fuzzylist` - required array
-
-`whitelist` - required array
-
-`blacklist` - required array
+| Attributes  |          |           |
+|-------------|----------|-----------|
+| `version`   | required | number    |
+|             |          | Version   |
+| `tolerance` | required | number    |
+|             |          | Tolerance |
+| `fuzzylist` | required | array     |
+| Fuzzylist   | string   | 0         |
+| `whitelist` | required | array     |
+| Whitelist   | string   | 0         |
+| `blacklist` | required | array     |
+| Blacklist   | string   | 0         |
 
 #### Phising blacklist, whitelist, and fuzzylist
 

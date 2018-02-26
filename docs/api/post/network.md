@@ -14,34 +14,47 @@ A request using an "HTTP POST-compatible" (state-changing) JSON-RPC method. Use 
 
 #### Attributes
 
-`jsonrpc` - required enum  
-JSON-RPC version  
-`2.0` string
+| Attributes                         |          |                     |
+|------------------------------------|----------|---------------------|
+| `jsonrpc`                          | required | enum                |
+| JSON-RPC version                   | `2.0`    | string              |
+| `id`                               | required | number              |
+|                                    |          | JSON-RPC request ID |
+| `method`                           | required | enum                |
+| Ethereum JSON-RPC method           |          |                     |
+| `eth_sendRawTransaction`           |          | string              |
+| `eth_estimateGas`                  |          | string              |
+| `eth_submitWork`                   |          | string              |
+| `eth_submitHashrate`               |          | string              |
+| `params`                           | required | array               |
+| JSON-RPC parameters (can be empty) |          |                     |
 
-`method` - required enum  
-| Ethereum JSON-RPC method |        |
-|--------------------------|--------|
-| eth_sendRawTransaction   | string |
-| eth_estimateGas          | string |
-| eth_submitWork           | string |
-| eth_submitHashrate       | string |
-
-`params` - required array  
-JSON-RPC parameters (can be empty)
+```
+curl --include \
+    --request POST \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data-binary "{
+  \"jsonrpc\": \"2.0\",
+  \"id\": 57386342,
+  \"method\": \"eth_submitHashrate\",
+  \"params\": []
+}" \
+'https://api.infura.io/v1/jsonrpc/{network}'
+```
 
 ### Response
 
-#### Attributes
+| Attributes       |          |                                         |
+|------------------|----------|-----------------------------------------|
+| `jsonrpc`        | required | enum                                    |
+| JSON-RPC version | `2.0`    | string                                  |
+| `id`             | required | number                                  |
+|                  |          | JSON-RPC request ID                     |
+| `result`         |          | string                                  |
+|                  |          | JSON-RPC result (can also be an object) |
 
-`jsonrpc` - required enum  
-JSON-RPC version  
-`2.0` string
-
-`id` - required number - JSON-RPC request ID
-
-`result` string - JSON-RPC result (can also be an object)
-
-#### Ticker
+#### JSON-RPC Response
 
 `200`
 
@@ -89,25 +102,34 @@ JSON-RPC version
 
 ### Request
 
-#### Attributes
+| Attributes                         |          |                     |
+|------------------------------------|----------|---------------------|
+| `jsonrpc`                          | required | enum                |
+| JSON-RPC version                   | `2.0`    | string              |
+| `id`                               | required | number              |
+|                                    |          | JSON-RPC request ID |
+| `method`                           | required | enum                |
+| Ethereum JSON-RPC method           |          |                     |
+| `eth_sendRawTransaction`           |          | string              |
+| `eth_estimateGas`                  |          | string              |
+| `eth_submitWork`                   |          | string              |
+| `eth_submitHashrate`               |          | string              |
+| `params`                           | required | array               |
+| JSON-RPC parameters (can be empty) |          |                     |
 
-`jsonrpc` - required num  
-JSON-RPC version  
-`2.0` - string
-
-`id` - required number - JSON-RPC request ID
-
-`method` - required enum
-
-| **Ethereum JSON-RPC method** |--------|
-|------------------------------|--------|
-| eth_sendRawTransaction       | string |
-| eth_estimateGas              | string |
-| eth_submitWork               | string |
-| eth_submitHashrate           | string |
-
-`params` - required array - JSON-rpc result (can also be an object)
-
+```
+curl --include \
+    --request POST \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data-binary "{
+  \"jsonrpc\": \"2.0\",
+  \"id\": 1260246,
+  \"method\": \"eth_submitWork\",
+  \"params\": []
+}" \
+'https://api.infura.io/v1/jsonrpc/{network}'
+```
 ### Response
 
 Bad JSON in POST body or missing Content-Type Headers
@@ -118,11 +140,73 @@ Bad JSON in POST body or missing Content-Type Headers
 
 `Content-Type:application/JSON`
 
+### Request
+
+| Attributes                         |          |                     |
+|------------------------------------|----------|---------------------|
+| `jsonrpc`                          | required | enum                |
+| JSON-RPC version                   | `2.0`    | string              |
+| `id`                               | required | number              |
+|                                    |          | JSON-RPC request ID |
+| `method`                           | required | enum                |
+| Ethereum JSON-RPC method           |          |                     |
+| `eth_sendRawTransaction`           |          | string              |
+| `eth_estimateGas`                  |          | string              |
+| `eth_submitWork`                   |          | string              |
+| `eth_submitHashrate`               |          | string              |
+| `params`                           | required | array               |
+| JSON-RPC parameters (can be empty) |          |                     |
+
+```
+curl --include \
+    --request POST \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data-binary "{
+  \"jsonrpc\": \"2.0\",
+  \"id\": -2521981,
+  \"method\": \"eth_estimateGas\",
+  \"params\": []
+}" \
+'https://api.infura.io/v1/jsonrpc/{network}'
+```
+
 ### Response
 
 JSON-RPC method is not a valid POST method
 
 `404`
+
+### Request
+
+| Attributes                         |          |                     |
+|------------------------------------|----------|---------------------|
+| `jsonrpc`                          | required | enum                |
+| JSON-RPC version                   | `2.0`    | string              |
+| `id`                               | required | number              |
+|                                    |          | JSON-RPC request ID |
+| `method`                           | required | enum                |
+| Ethereum JSON-RPC method           |          |                     |
+| `eth_sendRawTransaction`           |          | string              |
+| `eth_estimateGas`                  |          | string              |
+| `eth_submitWork`                   |          | string              |
+| `eth_submitHashrate`               |          | string              |
+| `params`                           | required | array               |
+| JSON-RPC parameters (can be empty) |          |                     |
+
+```
+curl --include \
+    --request POST \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data-binary "{
+  \"jsonrpc\": \"2.0\",
+  \"id\": -50206243,
+  \"method\": \"eth_submitWork\",
+  \"params\": []
+}" \
+'https://api.infura.io/v1/jsonrpc/{network}'
+```
 
 ### Response
 
@@ -133,6 +217,37 @@ Server error
 **Headers**
 
 `Content-Type:application/JSON`
+
+### Request
+
+| Attributes                         |          |                     |
+|------------------------------------|----------|---------------------|
+| `jsonrpc`                          | required | enum                |
+| JSON-RPC version                   | `2.0`    | string              |
+| `id`                               | required | number              |
+|                                    |          | JSON-RPC request ID |
+| `method`                           | required | enum                |
+| Ethereum JSON-RPC method           |          |                     |
+| `eth_sendRawTransaction`           |          | string              |
+| `eth_estimateGas`                  |          | string              |
+| `eth_submitWork`                   |          | string              |
+| `eth_submitHashrate`               |          | string              |
+| `params`                           | required | array               |
+| JSON-RPC parameters (can be empty) |          |                     |
+
+```
+curl --include \
+    --request POST \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data-binary "{
+  \"jsonrpc\": \"2.0\",
+  \"id\": 23533803,
+  \"method\": \"eth_estimateGas\",
+  \"params\": []
+}" \
+'https://api.infura.io/v1/jsonrpc/{network}'
+```
 
 ### Response
 

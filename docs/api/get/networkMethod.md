@@ -14,15 +14,23 @@ A request using an "HTTP GET-compatible" (non-state-changing) JSON-RPC method. M
 
 ### Request
 
-**NOTE: Not sure what to do since this is a code generator piece. See: [Apiary](https://infura.docs.apiary.io/#reference/0//v1/jsonrpc/{network}/methods/get)**
+```
+curl --include \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+  'https://api.infura.io/v1/jsonrpc/{network}/{method}?params='
+```
 
 ### Response
 
-| Attributes |                                                  |
-|------------|--------------------------------------------------|
-| jsonrpc    | enum                                             |
-| id         | `number` JSON-RPC request ID                     |
-| result     | `string` JSON-RPC result (can also be an object) |
+| Attributes                              |          |        |
+|-----------------------------------------|----------|--------|
+| `jsonrpc`                               | required | enum   |
+| JSON-RPC version                        | `2.0`    | string |
+| `id`                                    | required | number |
+| JSON-RPC request ID                     |          |        |
+| `result`                                |          | string |
+| JSON-RPC result (can also be an object) |          |        |
 
 #### JSON-RPC Response
 

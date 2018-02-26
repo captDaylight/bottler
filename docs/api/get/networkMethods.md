@@ -14,15 +14,21 @@ The JSON-RPC methods supported by the `/v1/jsonrpc/{network}/{method}` (GET) and
 
 ### Request
 
-**NOTE: Not sure what to do since this is a code generator piece. See: [Apiary](https://infura.docs.apiary.io/#reference/0//v1/jsonrpc/{network}/methods/get)**
+```
+curl --include \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+  'https://api.infura.io/v1/jsonrpc/{network}/methods'
+```
 
 ### Response
 
-#### Attributes
-
-`get` - required array - List of methods supported by the /v1/jsonrpc/{network}/{method} endpoint (GET)
-
-`post` - required array - List of methods supported by the /v1/jsonrpc/{network} endpoint (POST)
+| Attributes                                                                     |          |       |
+|--------------------------------------------------------------------------------|----------|-------|
+| `get`                                                                          | required | array |
+| List of methods supported by the /v1/jsonrpc/{network}/{method} endpoint (GET) | `string` | 0     |
+| `post`                                                                         | required | array |
+| List of methods supported by the /v1/jsonrpc/{network} endpoint (POST)         | `string` | 0     |
 
 #### Methods Response
 
@@ -82,8 +88,8 @@ The JSON-RPC methods supported by the `/v1/jsonrpc/{network}/{method}` (GET) and
 
 Server error
 
-``500``
+500`
 
 **Headers**
 
-``Content-Type:application/json``
+`Content-Type:application/json`

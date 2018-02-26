@@ -8,33 +8,40 @@ Get pricing (ticker) data for various currency pairs (fiat, crypto, and tokens) 
 GET https://private-anon-cf6e378447-infura.apiary-mock.com/v1/ticker/symbol
 ```
 
-### Parameters
+| Parameters |                               |        |
+|------------|-------------------------------|--------|
+| `symbol`   | Ticker symbol (currency pair) | String |
 
-| Attributes |                              |        |
-|------------|------------------------------|--------|
-| Symbol     | Ticker symbol (currency pair | string |
+### Request
+```
+curl --include \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+  'https://api.infura.io/v1/ticker/{symbol}'
+```
 
 ### Response
 
-#### Attributes
-
-`base` string - Currency pair base
-
-`quote` string - Currency pair quote
-
-`bid` number - Bid at the exchange with the most volume
-
-`ask` number - Ask at the exchange with the most volume
-
-`exchange` string - The exchange with the most value
-
-`volume` number - Volume at the exchange with the most volume
-
-`num_exchanges` number - Number of exchanges queried
-
-`total_volume` number - Total volume across al exchanges queried
-
-`timestamp` number - Unix timestamp
+| Attributes      |                                             |
+|-----------------|---------------------------------------------|
+| `base`          | string                                      |
+|                 | Currency pair base                          |
+| `quote`         | string                                      |
+|                 | Currency pair quote                         |
+| `bid`           | number                                      |
+|                 | Bid at the exchange with the most volume    |
+| `ask`           | number                                      |
+|                 | Ask at the exchange with most volume        |
+| `exchange`      | string                                      |
+|                 | The exchange with the most volume           |
+| `volume`        | number                                      |
+|                 | Volume at the exchange with the most volume |
+| `num_exchanges` | number                                      |
+|                 | Number of exchanges queried                 |
+| `total_volume`  | number                                      |
+|                 | Total volume across all exchanges queried   |
+| `total_volume   | number                                      |
+|                 | Unix timestamp                              |
 
 #### Ticker Response
 

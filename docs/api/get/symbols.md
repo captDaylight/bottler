@@ -8,11 +8,19 @@ Get a list of supported symbols (currency pairs), including fiat, crypto, and to
 
 ### Request
 
+```
+curl --include \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+  'https://api.infura.io/v1/ticker/symbols'
+```
+
 ### Response
 
-#### Attributes
-
-`symbols` array - List of supported symbols (currency pairs)
+| Attributes                                 |          |                                         |
+|--------------------------------------------|----------|-----------------------------------------|
+| `symbols`                                  |          | array                                   |
+| List of supported symbols (currency pairs) | `string` | 0                                       |
 
 #### Symbols Response
 
