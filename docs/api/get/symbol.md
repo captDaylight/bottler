@@ -40,7 +40,7 @@ curl --include \
 |                 | Number of exchanges queried                 |
 | `total_volume`  | number                                      |
 |                 | Total volume across all exchanges queried   |
-| `total_volume   | number                                      |
+| `timestamp`     | number                                      |
 |                 | Unix timestamp                              |
 
 #### Ticker Response
