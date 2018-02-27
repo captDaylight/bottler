@@ -11,6 +11,13 @@ const outFileName = process.argv[3] || 'bundle';
 // TODO hardcoding most of this for now, should be generated in reality
 const githubUrl = 'https://github.com/captDaylight/bottler/tree/master/';
 
+const matchName = nameToMatch => (name) => {
+  if (typeof name === 'string') {
+    return name === nameToMatch;
+  }
+  return Object.keys(name)[0] === nameToMatch;
+};
+
 // helper function to create folder if it doesn't exist, then write file
 const writeFileToFolder = (path, contents, cb) => {
   mkdirp(dirname(path), (err) => {
@@ -57,8 +64,8 @@ const compileDirectory = (contents, pathname, path = '') => {
   return contents
     .map(item => parse(item))
     .sort((a, b) => {
-      const aOrder = order ? order.findIndex(name => name === a.name) : a.name;
-      const bOrder = order ? order.findIndex(name => name === b.name) : b.name;
+      const aOrder = order ? order.findIndex(matchName(a.name)) : a.name;
+      const bOrder = order ? order.findIndex(matchName(b.name)) : b.name;
 
       if (aOrder < bOrder) return -1;
       if (aOrder > bOrder) return 1;
@@ -73,22 +80,27 @@ const compileDirectory = (contents, pathname, path = '') => {
 
         // if it's markdown, write contents to the object
         const content = readFileSync(newPathname, 'utf8');
+        const headers = findAllHeaders(content);
 
         // TODO redundant?
         return [...acc, {
           name,
+          title: headers['#'] ? headers['#'][0] : name,
           content,
           url: `${githubUrl}${entryFolder}${path}/${base}`,
-          headers: findAllHeaders(content),
+          headers,
         }];
       }
 
       // if directory, recurse through the subdirector
       const content = compileDirectory(getDirectories(newPathname), newPathname, `${path}/${base}`);
+      const title = order.find(matchName(name));
+
       return [
         ...acc,
         {
           name,
+          title: typeof title === 'string' ? title : title[Object.keys(title)[0]],
           content,
           url: `${githubUrl}${entryFolder}${path}/${base}`,
         },
