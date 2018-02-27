@@ -1,6 +1,6 @@
 # Choose a Network
 
-Use one of these test or production endpoints as your Ethereum client provider. Be sure to add your Access Token to the end of the URL.
+Use one of these test or production endpoints as your Ethereum client provider. Add your Access Token to the end of the URL.
 
 | Network   | Description        | URL                                                                                  |
 |-----------|--------------------|--------------------------------------------------------------------------------------|
