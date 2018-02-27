@@ -88,7 +88,7 @@ curl --include \
 
 Server error
 
-500`
+`500`
 
 **Headers**
 
